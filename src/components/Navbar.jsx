@@ -19,25 +19,28 @@ export const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
             </li>
 
-            {user ? (
-              <>
-                {!user.isAuthor && <li><NavLink to="/becomeAuthor">Become an author</NavLink></li> }
+            <div>
+              {user ? (
+                <>
+                  {!user.isAuthor ? <li><NavLink to="/becomeAuthor">Become an author</NavLink></li> : (
+                    <li>
+                      <NavLink to="/addPost">Create post</NavLink>
+                    </li>
+                  ) }
 
-                <li>
-                  <NavLink to="/addPost">Create post</NavLink>
-                </li>
-
-                <li>
-                  <button onClick={handleLogout}>Log out</button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <NavLink to="/login">Log in</NavLink>
-                </li>
-              </>
-            )}
+                  <li>
+                    <span onClick={handleLogout}>Log out</span>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink to="/login">Log in</NavLink>
+                  </li>
+                </>
+              )}
+            </div>
+            
         </ul>
     </nav>
   )
