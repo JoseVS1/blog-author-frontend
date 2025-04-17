@@ -58,20 +58,26 @@ export const Login = () => {
     });
   }
   return (
-    <>
-      <h1>Login</h1>
+    <div className="login-page">
+      <div className="login-card">
+        <h1>Login</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input type="text" name="username" id="username" value={formData.username} onChange={handleInputChange} required />
-        
-        <label htmlFor="password">Password: </label>
-        <input type="password" name="password" id="password" value={formData.password} onChange={handleInputChange} required />
-
-        <button type="submit">Log in</button>
-
-        {errors.length > 0 && <Errors errors={errors} />}
-      </form>
-    </>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="username">Username: </label>
+            <input type="text" name="username" id="username" value={formData.username} onChange={handleInputChange} required />
+          </div>
+          
+          <div>
+            <label htmlFor="password">Password: </label>
+            <input type="password" name="password" id="password" value={formData.password} onChange={handleInputChange} required />
+          
+            {errors.length > 0 && <Errors errors={errors} />}
+          </div>
+          
+          <button type="submit">Log in</button>
+        </form>
+      </div>
+    </div>
   )
 }

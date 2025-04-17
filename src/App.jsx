@@ -10,6 +10,7 @@ import { NoMatch } from './pages/NoMatch'
 import { BecomeAuthor } from './pages/BecomeAuthor'
 import { CreatePost } from './pages/CreatePost'
 import { UpdatePost } from "./pages/UpdatePost"
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,12 +41,32 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+            <ProtectedRoute user={user}>
+              <Home />
+            </ProtectedRoute>
+          } />
           <Route path="/login" element={<Login />} />
-          <Route path="/posts/:id" element={<Post />} />
-          <Route path="/posts/:id/update" element={<UpdatePost />} />
-          <Route path='/becomeAuthor' element={<BecomeAuthor />} />
-          <Route path="/addPost" element={<CreatePost />} />
+          <Route path="/posts/:id" element={
+            <ProtectedRoute user={user}>
+              <Post />
+            </ProtectedRoute>
+          } />
+          <Route path="/posts/:id/update" element={
+            <ProtectedRoute user={user}>
+              <UpdatePost />
+            </ProtectedRoute>
+          } />
+          <Route path='/becomeAuthor' element={
+            <ProtectedRoute user={user}>
+              <BecomeAuthor />
+            </ProtectedRoute>
+          } />
+          <Route path="/addPost" element={
+            <ProtectedRoute user={user}>
+              <CreatePost />
+            </ProtectedRoute>
+          } />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </UserContext.Provider>
