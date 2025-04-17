@@ -24,7 +24,8 @@ export const BecomeAuthor = () => {
             const response = await fetch(`http://localhost:3000/api/users/${user.id}/author`, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify({
                     code
@@ -48,16 +49,18 @@ export const BecomeAuthor = () => {
     }
 
   return (
-    <div>
+    <div className="become-author-page">
         <h1>Become an author</h1>
 
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="code">Enter the secret code: </label>
-            <input type="text" name="code" id="code" value={code} onChange={(e) => setCode(e.target.value)} />
-
+        <form className="become-author-form" onSubmit={handleSubmit}>
+            <div>
+                <label htmlFor="code">Enter the secret code: </label>
+                <input type="text" name="code" id="code" value={code} onChange={(e) => setCode(e.target.value)} required />
+                
+                {errors.length > 0 && <Errors errors={errors} />}
+            </div>
+            
             <button type="submit">Submit</button>
-
-            {errors.length > 0 && <Errors errors={errors} />}
         </form>
     </div>
   )

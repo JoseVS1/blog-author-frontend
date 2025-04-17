@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import UserContext from '../context/UserContext';
 
 export const Home = () => {
@@ -21,11 +21,13 @@ export const Home = () => {
         getPosts();
     }, []);
   return (
-    <>
+    <div className='home-page'>
         {user && user.isAuthor ? (
             <>
-                <div>Blog Admin</div>
-
+                <div className="header-container">
+                    <h1>Blog Admin</h1>
+                </div>
+                
                 {posts.length > 0 ? (
                     <ul>
                         {posts.map(post => (
@@ -38,8 +40,11 @@ export const Home = () => {
                 ) : <h1>Hola</h1> }
             </>
         ) : (
-            <h1>You are not an author</h1>
+            <div className="header-container">
+                <h1>You are not an author</h1>
+                <h2 className='link'><NavLink to="/becomeAuthor">Become one</NavLink>.</h2>
+            </div>
         )}
 
-    </>
+    </div>
 )}

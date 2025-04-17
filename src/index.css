@@ -61,6 +61,7 @@ a, a:visited, a:hover, a:active {
 
 .error {
     color: #e63946;
+    font-size: 1.6rem;
 }
 
 /* NAVBAR */
@@ -187,11 +188,79 @@ nav ul div {
 .home-page {
     height: 94.5vh;
     background-color: #1e1e2f;
-    color: white;
+    color: #f8f8f8;
+    padding: 5rem;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3rem;
+    gap: 2rem;
 }
 
 .post-list {
     background-color: #2e2e42;
+}
+
+/* BECOME AUTHOR PAGE */
+
+.become-author-page {
+    height: 94.5vh;
+    background-color: #1e1e2f;
+    color: #f8f8f8;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.become-author-page h1 {
+    font-size: 4rem;
+    color: #fca311;
+    font-weight: bold;
+}
+
+.become-author-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.become-author-form div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.become-author-form label {
+    color: #c0c0dd;
+    font-size: 2rem;
+}
+
+.become-author-form input {
+    background-color: #2e2e42;
+    color: #f8f8f8;
+    border: 1px solid #444455;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: 8px;
+}
+
+.become-author-form button {
+    background-color: #fca311;
+    color: #1e1e2f;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.become-author-form button:hover {
+    background-color: #ffb703;
 }
 
 /* PHONE */
