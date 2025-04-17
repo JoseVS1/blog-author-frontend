@@ -37,7 +37,12 @@ export const Home = () => {
                             </li>
                         ))}
                     </ul>
-                ) : <h1>Hola</h1> }
+                ) : (
+                    <div className='empty-container'>
+                        <h1>There are no posts...</h1>
+                        <h2 className='link'><NavLink to="/addPost">Create one</NavLink>.</h2>
+                    </div>
+                ) }
             </>
         ) : (
             <div className="header-container">
