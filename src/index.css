@@ -594,6 +594,12 @@ div .comment-heading {
         width: 60%;
     }
 
+    /* POST PAGE */
+
+    .post-page {
+        padding: 3rem;
+    }
+
     /* CREATE POST PAGE */
 
     .create-post-form, .update-post-form {
