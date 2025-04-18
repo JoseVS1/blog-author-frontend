@@ -51,7 +51,7 @@ export const Comment = ({ comment, setComments }) => {
 
                 setComments(prevComments => prevComments.map(c => c.id === comment.id ? {...c, text: updatedComment.text, updatedAt: updatedComment.updatedAt} : c));
                 setIsEditing(false);
-                setFormattedUpdatedAt(format(parseISO(data.comment.updatedAt), "MMMM do, yyyy"))
+                setFormattedUpdatedAt(format(parseISO(data.comment.updatedAt), "MMMM do, yyyy"));
             }
         } catch (err) {
             console.error(err);
@@ -100,7 +100,6 @@ export const Comment = ({ comment, setComments }) => {
                     <button className="update-button" onClick={handleUpdateComment}>Edit</button>
                     <button className="delete-button" onClick={handleDeleteComment}>Delete</button>
                 </div>
-                
             </>
         )}
     </div>

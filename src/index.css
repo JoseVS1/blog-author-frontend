@@ -557,6 +557,24 @@ div .comment-heading {
     gap: 1rem;
 }
 
+/* NOT FOUND PAGE */
+
+.not-found-page {
+    height: 94.5vh;
+    background-color: #1e1e2f;
+    color: #f8f8f8;
+    padding: 10rem 5rem;
+}
+
+.not-found-page h1 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.not-found-page span {
+    color: #fca311;
+}
+
 /* PHONE */
 @media (max-width: 680px) {
     /* LOGIN AND SIGNUP PAGES */
@@ -582,6 +600,11 @@ div .comment-heading {
         width: 45rem;
     }
 
+    /* NOT FOUND PAGE */
+
+    .not-found-page h1 {
+        font-size: 3rem;
+    }
 }
 
 /* TABLET */
