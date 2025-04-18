@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import UserContext from "../context/UserContext";
+import { parseISO, format } from "date-fns"
 
 export const Comment = ({ comment, setComments }) => {
     const [commentUser, setCommentUser] = useState({});
     const [text, setText] = useState(comment.text);
     const [isEditing, setIsEditing] = useState(false);
     const { user } = useContext(UserContext);
+    const [formattedUpdatedAt, setFormattedUpdatedAt] = useState(format(parseISO(comment.updatedAt), "MMMM do, yyyy"));
 
     useEffect(() => {
         const getUser = async () => {
@@ -49,6 +51,7 @@ export const Comment = ({ comment, setComments }) => {
 
                 setComments(prevComments => prevComments.map(c => c.id === comment.id ? {...c, text: updatedComment.text, updatedAt: updatedComment.updatedAt} : c));
                 setIsEditing(false);
+                setFormattedUpdatedAt(format(parseISO(data.comment.updatedAt), "MMMM do, yyyy"))
             }
         } catch (err) {
             console.error(err);
@@ -76,24 +79,30 @@ export const Comment = ({ comment, setComments }) => {
         setIsEditing(false);
     }
   return (
-    <>
+    <div className="comment">
         <h2>By: {commentUser.username}</h2>
-        {comment.createdAt !== comment.updatedAt && <h3>Updated at: {comment.updatedAt}</h3>}
+        {comment.createdAt !== comment.updatedAt && <h3>Updated at: {formattedUpdatedAt}</h3>}
 
         {isEditing ? (
-            <form onSubmit={handleSubmit}>
+            <form className="update-comment-form" onSubmit={handleSubmit}>
                 <textarea name="text" id="text" value={text} onChange={(e) => setText(e.target.value)}></textarea>
-                <button onClick={handleCancelEdit}>Cancel</button>
-                <button type="submit">Edit</button>
+                
+                <div className="update-comment-actions">
+                    <button className="cancel-button" onClick={handleCancelEdit}>Cancel</button>
+                    <button className="edit-comment-button" type="submit">Edit</button>
+                </div>
             </form>
         ) : (
             <>
                 <p>{comment.text}</p>
 
-                <button onClick={handleUpdateComment}>Edit</button>
-                <button onClick={handleDeleteComment}>Delete</button>
+                <div className="comment-actions">
+                    <button className="update-button" onClick={handleUpdateComment}>Edit</button>
+                    <button className="delete-button" onClick={handleDeleteComment}>Delete</button>
+                </div>
+                
             </>
         )}
-    </>
+    </div>
   )
 }

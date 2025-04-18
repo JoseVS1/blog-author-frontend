@@ -135,7 +135,11 @@ export const Post = () => {
                     <button className="delete-button" onClick={handleDeletePost}>Delete</button>
                 </div>
                 
-                {comments && comments.length > 0 ? <Comments comments={comments} setComments={setComments} /> : <h1>There are no comments</h1> }
+                {comments && comments.length > 0 ? <Comments comments={comments} setComments={setComments} /> : (
+                    <div className="empty-comments-container">
+                        <h2>There are no comments</h2>
+                    </div>
+                ) }
             </>
         ) : (
             <p>Loading post...</p>
