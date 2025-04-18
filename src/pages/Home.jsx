@@ -26,7 +26,7 @@ export const Home = () => {
         {user && user.isAuthor ? (
             <>
                 <div className="header-container">
-                    <h1>Blog Admin</h1>
+                    <h1>ObsidianPost Admin</h1>
                 </div>
                 
                 {posts.length > 0 ? (
