@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router';
 import UserContext from '../context/UserContext';
+import parse from "html-react-parser"
 
 export const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -29,11 +30,18 @@ export const Home = () => {
                 </div>
                 
                 {posts.length > 0 ? (
-                    <ul>
+                    <ul className='post-list'>
                         {posts.map(post => (
                             <li key={post.id}>
-                                <Link to={`/posts/${post.id}`}>{post.title}</Link>
-                                <span>{post.published ? "Published" : "Unpublished"}</span>
+                                <Link className='post' to={`/posts/${post.id}`}>
+                                    <div>
+                                        <h2>{post.title}</h2>
+                                        <p>{parse(post.content)}</p>
+                                    </div>
+                                    
+                                    <span>{post.published ? "Published" : "Unpublished"}</span>
+                                </Link>
+                                
                             </li>
                         ))}
                     </ul>

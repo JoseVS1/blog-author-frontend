@@ -192,7 +192,7 @@ nav ul div {
     padding: 5rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 5rem;
 }
 
 .header-container {
@@ -214,8 +214,54 @@ nav ul div {
 }
 
 .post-list {
-    background-color: #2e2e42;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
+
+.post {
+    background-color: #2e2e42;
+    padding: 3rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post h2 {
+    font-size: 3rem;
+    color: #f8f8f8;
+    font-weight: bold;
+}
+
+.post:hover h2 {
+    color: #fca311;
+    text-decoration: underline;
+}
+
+.post p {
+    font-size: 1.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+.post div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 85%;
+}
+
+.post span {
+    color: #c0c0dd;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+
+
 
 /* BECOME AUTHOR PAGE */
 
@@ -346,6 +392,12 @@ nav ul div {
         padding: 6rem 4rem;
     }
 
+    /* HOME PAGE */
+    
+    .post div {
+        width: 60%;
+    }
+
     /* CREATE POST PAGE */
 
     .create-post-form {
@@ -356,6 +408,12 @@ nav ul div {
 
 /* TABLET */
 @media (min-width: 681px) and (max-width: 1260px) {
+    /* HOME PAGE */
+
+    .post div {
+        width: 70%;
+    }
+    
     /* CREATE POST PAGE */
 
     .create-post-form {
