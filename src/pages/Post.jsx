@@ -113,7 +113,7 @@ export const Post = () => {
     }
 
   return (
-    <div>
+    <div className="post-page">
         {post ? (
             <>
                 {errors.length > 0 && <Errors errors={errors} />}
@@ -122,12 +122,16 @@ export const Post = () => {
                 <h2>By: {postUser.username}</h2>
                 <h3>Created at: {post.createdAt}</h3>
 
-                {parse(post.content)}
-
-                <button onClick={handleTogglePublish}>{post.published ? "Unpublish" : "Publish"}</button>
-                <Link to={`/posts/${id}/update`}>Update</Link>
-                <button onClick={handleDeletePost}>Delete</button>
-
+                <p className="post-content">
+                    {parse(post.content)}
+                </p>
+                
+                <div className="post-actions">
+                    <button className="publish-button" onClick={handleTogglePublish}>{post.published ? "Unpublish" : "Publish"}</button>
+                    <Link className="update-button" to={`/posts/${id}/update`}>Update</Link>
+                    <button className="delete-button" onClick={handleDeletePost}>Delete</button>
+                </div>
+                
                 {comments && comments.length > 0 ? <Comments comments={comments} setComments={setComments} /> : <h1>There are no comments</h1> }
             </>
         ) : (
