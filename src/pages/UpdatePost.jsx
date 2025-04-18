@@ -18,7 +18,9 @@ export const UpdatePost = () => {
         
         const initEditor = () => {
             tinymce.init({
+                content_css: "/src/editor-content.css",
                 selector: '#post-form-content',
+                skin: "oxide-dark",
                 height: 500,
                 setup: function(editor) {
                     editor.on('init', function() {
@@ -88,6 +90,11 @@ export const UpdatePost = () => {
         const editor = tinymce.get("post-form-content");
         const content = editor ? editor.getContent() : "";
 
+        if (!content) {
+            setErrors(["Post body is required"]);
+            return;
+        };
+
         try {
             const response = await fetch(`http://localhost:3000/api/posts/${id}`, {
                 method: "PUT",
@@ -114,25 +121,33 @@ export const UpdatePost = () => {
     }
 
     return (
-        <>
-            <h1>Update post</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title: </label>
-                <input 
-                    type="text" 
-                    name="title" 
-                    id="title" 
-                    value={formData.title} 
-                    onChange={handleInputChange} 
-                    required 
-                />
+        <div className="update-post-page">
+            <div className="header-container">
+                <h1>Update post</h1>
+            </div>
+            
+            <form className="update-post-form" onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="title">Title: </label>
+                    <input 
+                        type="text" 
+                        name="title" 
+                        id="title" 
+                        value={formData.title} 
+                        onChange={handleInputChange} 
+                        required 
+                    />
+                </div>
+                
                 <textarea 
                     id="post-form-content"
                     name="content"
                 />
+
+                {errors.length > 0 && <Errors errors={errors} />}
+                
                 <button type="submit">Update</button>
             </form>
-            {errors.length > 0 && <Errors errors={errors} />}
-        </>
+        </div>
     )
 }
