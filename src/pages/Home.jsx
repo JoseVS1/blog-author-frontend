@@ -36,7 +36,7 @@ export const Home = () => {
                                 <Link className='post' to={`/posts/${post.id}`}>
                                     <div>
                                         <h2>{post.title}</h2>
-                                        <p>{parse(post.content)}</p>
+                                        {parse(post.content)}
                                     </div>
                                     
                                     <span>{post.published ? "Published" : "Unpublished"}</span>

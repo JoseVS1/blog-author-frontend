@@ -5,6 +5,7 @@ import UserContext from "../context/UserContext";
 import { Link } from "react-router";
 import { Errors } from "../components/Errors";
 import parse from "html-react-parser"
+import { parseISO, format } from "date-fns"
 
 export const Post = () => {
     const { id } = useParams();
@@ -14,6 +15,7 @@ export const Post = () => {
     const { user } = useContext(UserContext);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
+    const [formattedCreatedAt, setFormattedCreatedAt] = useState("");
 
     useEffect(() => {
         const getPost = async () => {
@@ -22,6 +24,7 @@ export const Post = () => {
                 const data = await response.json();
 
                 setPost(data.post);
+                setFormattedCreatedAt(format(parseISO(data.post.createdAt), "MMMM do, yyyy"))
             } catch (err) {
                 console.error(err);
             }
@@ -120,11 +123,11 @@ export const Post = () => {
 
                 <h1>{post.title}</h1>
                 <h2>By: {postUser.username}</h2>
-                <h3>Created at: {post.createdAt}</h3>
+                <h3>Created at: {formattedCreatedAt}</h3>
 
-                <p className="post-content">
+                <div className="post-content">
                     {parse(post.content)}
-                </p>
+                </div>
                 
                 <div className="post-actions">
                     <button className="publish-button" onClick={handleTogglePublish}>{post.published ? "Unpublish" : "Publish"}</button>
