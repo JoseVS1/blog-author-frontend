@@ -115,7 +115,7 @@ This specialized frontend, built with React and Vite, provides authors and admin
 
 ## License
 
-[MIT License](LICENSE)
+MIT License
 
 ## Acknowledgements
 
