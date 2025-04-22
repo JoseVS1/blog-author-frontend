@@ -107,7 +107,6 @@ This application consumes the ObsidianPost Backend API. It does not expose its o
 -   Tokens are stored in the browser's `localStorage`.
 -   The token is included in the `Authorization: Bearer <token>` header for requests requiring authentication.
 -   The `ProtectedRoute` component prevents access if not logged in.
--   Frontend UI elements (like admin actions) are conditionally rendered based on the `user.isAuthor` flag obtained after login.
 -   The backend API performs the definitive authorization checks for all sensitive operations.
 
 ## Contributing
