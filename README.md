@@ -97,10 +97,6 @@ This specialized frontend, built with React and Vite, provides authors and admin
 -   On the post detail page (`/posts/:id`), all comments are displayed.
 -   Authors will see "Edit" and "Delete" buttons on *every* comment, allowing full moderation.
 
-## API Endpoints
-
-This application consumes the ObsidianPost Backend API. It does not expose its own endpoints. Key interactions include fetching posts/comments, user login, author promotion, and full CRUD operations for posts and comments via the backend API.
-
 ## Security
 
 -   User authentication relies on JWT tokens provided by the backend.
